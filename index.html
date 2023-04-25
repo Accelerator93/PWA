@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/icono.ico"> 
+  <link rel="manifest" href="manifest.json">
+  <title>Practica 4</title>
+</head>
+<header>
+  <img src="img/Fondo.png" alt="" width="80%">
+
+
+</header>
+<body>
+  
+  <h2>Aprende de tus personajes favoritos:</h2><br><br>
+  <label for="">Elije un campeón</label><br><br>
+  <select id="categoria">
+    <option value="" selected>Selección de personaje</option>
+    <option value="Ahri">Ahri</option>
+    <option value="Annie">Annie</option>
+    <option value="Brand">Brand</option>
+    <option value="Kaisa">Kaisa</option>
+    <option value="Katarina">Katarina</option>
+    <option value="MissFortune">MissFortune</option>
+    <option value="Sona">Sona</option>
+  </select>
+  <br><br><br>
+  <label for="">selecciona una skin</label><br><br>
+  <select id="subcategoria" disabled>
+    <option value="">skins</option>
+  
+  </select>
+  <br><br><br><br>
+  <div id="imagenes">
+    <img src="img/P.jpg" alt="" width="80%">
+  <script>
+
+    const categoriaSelect = document.getElementById("categoria");
+    const subcategoriaSelect = document.getElementById("subcategoria");
+    const imagenesDiv = document.getElementById("imagenes");
+
+    const opcionesSubcategoria = {
+      Ahri: ["Ahri","Aspirante", "Aquelarre"],
+      Annie : ["Annie", "Gotica", "SuperGalactica"],
+      Brand: ["Brand", "FuegoEspiritual", "Zombie"],
+      Kaisa: ["Kaisa", "KDA","GuardianaEstelar"],
+      Katarina: ["Katarina", "Mercenaria", "Minina",],
+      MissFortune: ["MissFortune", "AgenteSecreta", "GatilleraGalactica"],
+      Sona: ["Sona", "DJ", "Odisea"],
+    };
+
+    const DescCampeon = {
+        Ahri: {
+          descripcion:"Ahri es una raposa vastaya conectada de forma innata a la magia del reino de los espíritus. Es capaz de manipular las emociones de su presa antes de consumir su esencia, proceso que le transmite los recuerdos de cada alma que consume. Otrora una poderosa pero incontrolable depredadora, Ahri ahora viaja por el mundo en busca de vestigios de sus antepasados mientras intenta reemplazar los recuerdos robados por otros propios."
+        },
+        Aspirante:{
+          descripcion:"PASIVA: ROBO DE ESENCIAS: Ahri se cura tras matar a 9 súbditos o monstruos. Ahri se cura más cantidad tras eliminar a un campeón enemigo."
+        },
+        Aquelarre:{
+          descripcion: "R: IMPULSO ESPIRITUAL: Ahri se desliza hacia delante y libera rayos de esencia que infligen daño a los enemigos cercanos. Impulso espiritual puede usarse hasta tres veces antes de entrar en enfriamiento y las eliminaciones de campeones enemigos otorgan lanzamientos adicionales."
+        },
+        Annie:{
+          descripcion:"Peligrosa pero encantadoramente precoz, Annie es una pequeña maga con un inmenso poder piromántico. Incluso en los parajes montañosos al norte de Noxus es una hechicera sin precedentes. Su afinidad natural con el fuego se manifestó a temprana edad en arrebatos emocionales e impredecibles, aunque finalmente aprendió a controlar esos 'trucos traviesos'. Uno de sus favoritos es invocar a su adorado osito de peluche Tibbers; una bestia protectora envuelta en llamas. Atrapada en la perpetua inocencia de la niñez, Annie vaga por bosques oscuros, siempre buscando a alguien con quien jugar."
+        },
+        Gotica:{
+          descripcion:"PASIVA: PIROMANÍA: Después de 4 lanzamientos, el siguiente hechizo ofensivo de Annie aturdirá al objetivo. Annie comienza la partida y reaparece con Piromanía disponible."
+        },
+        SuperGalactica: {
+          descripcion: "R: INVOCAR: TIBBERS: Annie da vida a su oso Tibbers, que daña a todas las unidades de la zona. Tibbers puede atacar y quemar a los enemigos adyacentes."
+        },
+        Brand:{
+          descripcion: "Brand, antiguo miembro de la tribu Kegan Rodhe del helado Freljord, es una lección sobre la tentación de un poder mayor. En busca de una de las legendarias Runas Geogénicas, Kegan traicionó a sus compañeros y se quedó con la runa. El hombre desapareció al instante. Su alma se consumió y su cuerpo pasó a ser un recipiente de llamas vivas. Ahora, Brand recorre Valoran en busca de otras Runas Geogénicas, jurando vengarse por las calamidades que posiblemente jamás habría podido sufrir en una docena de vidas mortales."
+        },
+        FuegoEspiritual: {
+          descripcion:"PASIVA: NUBE DE FUEGO: Los hechizos de Brand prenden fuego a sus objetivos, lo que inflige daño durante 4 s. Puede acumularse hasta 3 veces. Si Brand asesina a un enemigo que esté en llamas, recupera maná. Cuando Nube de fuego alcanza el máximo de acumulaciones en un campeón o monstruo gigante, se vuelve inestable. Explota al cabo de 2 s, aplica efectos de hechizo e inflige una gran cantidad de daño en la zona que rodea a la víctima."
+        },
+        Zombie:{
+          descripcion:"R: DETONACIÓN ÍGNEA: Brand libera un torrente de fuego devastador que rebota hasta 5 veces entre Brand y los enemigos cercanos, e inflige daño mágico a los enemigos cada vez que rebota. Estos rebotes priorizan acumular al máximo Nube de fuego en los campeones. Si un objetivo está en llamas, Detonación ígnea lo ralentizará brevemente."
+        },
+        Kaisa: {
+          descripcion:"Reclamada por el Vacío cuando era solo una niña, Kai'Sa logró sobrevivir por pura tenacidad y fuerza de voluntad. Sus experiencias la han convertido en una cazadora letal y, para algunos, el presagio de un futuro que preferirían no vivir para ver. Ahora que ha entrado en una tensa simbiosis con un caparazón viviente del Vacío, pronto llegará el momento de decidir si perdona a aquellos mortales que la llaman monstruo y se alía con ellos para tratar de derrotar a la oscuridad que se avecina... o simplemente deja que su mente olvide y que el Vacío consuma el mundo que la abandonó."
+        },
+        KDA:{
+          descripcion:"PASIVA: SEGUNDA PIEL: Los ataques básicos de Kai'Sa acumulan Plasma, lo que inflige daño mágico adicional en aumento. Los efectos de inmovilización de los aliados ayudan a acumular Plasma. Además, los objetos que Kai'Sa compre mejoran sus hechizos básicos y les otorgan propiedades más potentes."
+        },
+        GuardianaEstelar:{
+          descripcion:"R: INSTINTO ASESINO: Kai'Sa se desliza cerca de un campeón enemigo."
+        },
+        Katarina:{
+          descripcion:"Con un juicio decisivo y letal en el combate, Katarina es una de las mejores asesinas noxianas. Al ser la primogénita del legendario general Du Couteau, ha dado a conocer sus habilidades con asesinatos rápidos contra enemigos inconscientes. Una ambición exaltada la ha conducido a perseguir objetivos fuertemente protegidos, incluso poniendo en peligro a sus aliados. No importa la misión; Katarina no dudará en llevar a cabo su tarea en medio de un torbellino de dagas dentadas."
+        },
+        Mercenaria:{
+          descripcion:"PASIVA: ANSIA: Cuando muere un campeón que haya recibido daño de Katarina en los últimos segundos, el enfriamiento de sus habilidades se reduce drásticamente. Si Katarina recoge una daga, la usa para acuchillar a todos los enemigos cercanos, lo que inflige daño mágico."
+        },
+        Minina:{
+          descripcion:"R: LOTO MORTAL: Katarina despide una ráfaga de hojas e inflige gran cantidad de daño mágico a los 3 campeones enemigos más cercanos."
+        },
+        MissFortune:{
+          descripcion:"Sarah Fortune se cuenta sin duda entre los capitanes más conocidos de Aguas Estancadas y es tan célebre por su apariencia como temida por su ferocidad. Por eso despunta entre los criminales más peligrosos de esta ciudad portuaria. De niña, presenció cómo Gangplank, el rey de los piratas, asesinaba a su familia, una situación de la que se vengó salvajemente años después al hacer saltar por los aires su buque insignia con él a bordo. Todo aquel que la subestime se enfrentará a un oponente seductor e impredecible... y, seguramente, se lleve un par de agujeros de bala de regalo."
+        },
+        AgenteSecreta:{
+          descripcion:"PASIVA: CACHETE: Miss Fortune inflige daño físico adicional cada vez que golpea con un ataque básico a un nuevo objetivo."
+        },
+        GatilleraGalactica:{
+          descripcion:"R: LLUVIA DE BALAS: Miss Fortune canaliza una lluvia de balas en un cono frente a ella, infligiendo una gran cantidad de daño a los enemigos. Cada oleada de Lluvia de balas puede asestar impactos críticos."
+        },
+        Sona:{
+          descripcion:"Sona es la artista más virtuosa de Demacia con el etwahl de cuerda y solo se comunica a través de sus elegantes acordes y vibrantes melodías. Esta refinada actitud le ha hecho ganarse el favor de la alta sociedad, aunque los hay que sospechan que sus fascinantes notas emanan auténtica magia, un tabú en la cultura demaciana. Silenciosa para los extraños pero comprendida por sus íntimos, Sona puntea sus armonías con el objetivo de curar a sus aliados heridos y acabar con enemigos confiados."
+        },
+        DJ:{
+          descripcion:"PASIVA: ENERGÍA ACORDE: Accelerando: Sona obtiene velocidad de habilidades no definitivas de forma permanente al usar sus habilidades bien, hasta un límite. A partir de ese límite, los usos con éxito reducen el enfriamiento restante de su definitiva. Energía acorde: Cada pocos lanzamientos de hechizos, el siguiente ataque de Sona inflige daño mágico adicional, además de tener un efecto adicional según la última habilidad básica que haya activado Sona."
+        },
+        Odisea:{
+          descripcion:"R: CRESCENDO: Sona toca su acorde definitivo, que además de obligar a los campeones enemigos a bailar, les inflige daño mágico. El enfriamiento básico de las habilidades básicas de Sona se reduce con cada nivel."
+        }
+      }
+
+    categoriaSelect.addEventListener("change", () => {
+      subcategoriaSelect.innerHTML = "";
+      subcategoriaSelect.disabled = false;
+      const opciones = opcionesSubcategoria[categoriaSelect.value];
+      for (const opcion of opciones) {
+        const option = document.createElement("option");
+        option.value = opcion;
+        option.textContent = opcion;
+        subcategoriaSelect.appendChild(option);
+      }
+    });
+
+    subcategoriaSelect.addEventListener("change", () => {
+      const nombrecamp = categoriaSelect.value;
+      const descamp = subcategoriaSelect.value;
+      const descripcionCampeonElement = document.createElement('p');
+        descripcionCampeonElement.textContent = DescCampeon[descamp].descripcion;
+      const imagen = document.createElement("img");
+      const imagenSrc = `img/${categoriaSelect.value}/${subcategoriaSelect.value}.jpg`;
+      imagen.src = imagenSrc;
+      imagen.alt = subcategoriaSelect.value;
+      imagen.width = "900";
+      imagenesDiv.innerHTML = '';
+      imagenesDiv.appendChild(imagen);
+      imagen.addEventListener('click', function() {
+          window.location.href = `Champs.html?campeon=${nombrecamp}&imagen=${imagenSrc}&descripcion=${DescCampeon[descamp].descripcion}`;
+        });
+    });
+  </script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
+
+<footer>
+  <img src="img/LOL.jpeg" alt="" width="100%">
+</footer>

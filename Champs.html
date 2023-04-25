@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="img/icono.ico"> 
+    <link rel="stylesheet" href="css/style.css">
+    <title>Campeones</title>
+  </head>
+  <header>
+    <img src="img/Fondo.png" alt="" width="80%">
+    <nav>
+      <a href="index.html" id="btn" class="btn btn-primary">Volver</a>
+    </nav>
+  </header>
+  <body>
+    
+    <h1>Campeon Seleccionado:</h1>
+    <h2 id="nombre-campeon"></h2>
+    <img id="campeon-imagen" src="" alt="Imagen de campeon">
+    <p id="descripcion-campeon"></p>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const nombreCampeon = urlParams.get('campeon');
+      const imagenSrc = urlParams.get('imagen');
+      const descripcionCampeon = urlParams.get('descripcion');
+
+      const nombreCampeonElement = document.getElementById('nombre-campeon');
+      const imagenElement = document.getElementById('campeon-imagen');
+      const descripcionCampeonElement = document.getElementById('descripcion-campeon');
+
+      nombreCampeonElement.textContent = nombreCampeon;
+      imagenElement.src = imagenSrc;
+      imagenElement.alt = `Imagen de ${nombreCampeon}`;
+      imagenElement.style.width = '900px';
+      descripcionCampeonElement.textContent = descripcionCampeon;
+    </script>
+  </body>
+  <footer>
+    <img src="img/LOL.jpeg" alt="" width="100%">
+  </footer>
+</html>

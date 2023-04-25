@@ -1,0 +1,47 @@
+body{
+    background-color: grey;
+    text-align: center;
+}
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+p{
+font-family: 'Times New Roman', Times, serif;
+font-size: 30px;
+}
+select{
+    color: white;
+    background-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+#btn {
+    background: #b06363;
+    background-image: -webkit-linear-gradient(top, red, black);
+    background-image: -moz-linear-gradient(top, red, black);
+    background-image: -ms-linear-gradient(top, red, black);
+    background-image: -o-linear-gradient(top, red, black);
+    background-image: linear-gradient(to bottom, red, black);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    text-shadow: 3px 2px 1px #9daef5;
+    -webkit-box-shadow: 6px 5px 24px #666666;
+    -moz-box-shadow: 6px 5px 24px #666666;
+    box-shadow: 6px 5px 24px #666666;
+    font-family: Arial;
+    color: #fafafa;
+    font-size: 70px;
+    padding: 7px;
+    text-decoration: none;
+    }
+    #btn:hover {
+    background: gray;
+    background-image: -webkit-linear-gradient(top, black, red);
+    background-image: -moz-linear-gradient(top, black, red);
+    background-image: -ms-linear-gradient(top, black, red);
+    background-image: -o-linear-gradient(top, black, red);
+    background-image: linear-gradient(to bottom, black, red);
+    text-decoration: none;
+    }
