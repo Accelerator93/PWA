@@ -59,4 +59,8 @@ select{
         left: 0px;
         right: 0px;
         bottom: 0px;
+        margin-top: 50px;
+    }
+    #imfull {
+        margin-bottom: 50px;
     }
