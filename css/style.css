@@ -2,9 +2,13 @@ body{
     background-color: grey;
     text-align: center;
 }
-label{
+h2{
     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
+}
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
 }
 p{
 font-family: 'Times New Roman', Times, serif;
@@ -14,7 +18,7 @@ select{
     color: white;
     background-color: black;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 50px;
+    font-size: 30px;
 }
 #btn {
     background: #b06363;
@@ -44,4 +48,15 @@ select{
     background-image: -o-linear-gradient(top, black, red);
     background-image: linear-gradient(to bottom, black, red);
     text-decoration: none;
+    }
+
+    footer{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        background: black;
+        color: white;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
